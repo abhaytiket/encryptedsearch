@@ -1,0 +1,21 @@
+{
+    "name": "ENCRYPTEDSEARCH",
+    "dockerComposeFile": "docker-compose.yml",
+    "workspaceFolder": "/app",
+    "service": "encryptedsearch",
+    "customizations": {
+        "vscode": {
+          "settings": {},
+          "extensions": [
+            "golang.Go",
+            "eamodio.gitlens",
+            "GitHub.copilot",
+            "ms-vsliveshare.vsliveshare"
+          ]
+        }
+    },
+    "features": {
+      "git": "os-provided"
+    },
+    "overrideCommand": true
+}

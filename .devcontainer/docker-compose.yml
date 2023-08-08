@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  encryptedsearch:
+    build: .
+    cpus: "1"
+    mem_reservation: "10M"
+    mem_limit: "512M"
+    restart: always
+    env_file:
+      - .env.local
+    volumes:
+      - ..:/app
+    networks:
+      - encryptedsearch-net
+  encryptedsearch-mysql:
+    image: mysql:8.0.33
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    restart: always
+    env_file:
+      - .env.mysql.local
+    networks:
+      - encryptedsearch-net
+  encryptedsearch-mongodb:
+    image: mongo:latest
+    volumes:
+      - ./data/mongodb:/data/db
+    restart: always
+    env_file:
+      - .env.mongodb.local
+    networks:
+      - encryptedsearch-net
+networks:
+  encryptedsearch-net:
+    driver: bridge
